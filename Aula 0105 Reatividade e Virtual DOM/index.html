@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../vuejs/vue.js"></script>
+  <title>Vue.js</title>
+</head>
+<body>
+  <div id="app">
+    <p>Bermudas - R$ <span>{{ preco }}</span></p>
+    <button @click="total++">Adicionar</button>
+    <button @click="total--">Remover</button>
+    <span>{{ total }}</span>
+    <p>Total: R$ <span>{{ preco * total }}</span></p>
+  </div>
+  
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        preco: 69,
+        total: 0,
+      }
+    });
+  </script>
+</body>
+</html>
