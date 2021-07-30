@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../vuejs/vue.js"></script>
+  <title>Vue.js</title>
+</head>
+  <div id="app">
+    <p>Produto: {{ instrumento }}</span></p>
+
+    <div>
+      <button @click='escolherInstrumento("Violão")'>
+        Violão
+      </button>
+      <button @click='escolherInstrumento("Guitarra")'>
+        Guitarra
+      </button>
+    </div>
+    
+    <p>Quantidade: {{ total }}</p>
+
+    <div>
+      <button @click='incrementar'>
+        Incrementar
+      </button>
+      <button @click='diminuir'>
+        Diminuir
+      </button>
+    </div>
+    
+    <p>Preço: R$ {{ preco.latestPrice }} ({{ preco.companyName }} | {{ preco.latestTime }})</p>
+
+    <div>
+      <button @click='verEvento'>
+        Evento
+      </button>
+      <button @click='verPreco'>
+        Ver preço
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        total: 0,
+        instrumento: '',
+        preco: {},
+      },
+      methods: {
+        incrementar() {
+          this.total++;
+        },
+        diminuir() {
+          this.total--;
+        },
+        escolherInstrumento(instrumento) {
+          this.instrumento = instrumento;
+        },
+        verEvento(event) {
+          console.log(event);
+        },
+        async verPreco() {
+          const data = await fetch('https://api.origamid.dev/stock/aapl/quote');
+          this.preco = await data.json();
+        },
+      },
+    });
+
+    /* Exercícios
+    *
+    * Utilizando a API https://api.origamid.dev/stock/aapl/quote
+    * Crie um método que faça o fetch da resposta acima 
+    * O método deve ser ativado ao clique no botão Ver Preço
+    * Coloque a resposta json do fetch em uma data e
+    * mostre o valor de lalestPrice, latestTime e o
+    * companyName na interface.
+    */
+  </script>
+</body>
+</html>
