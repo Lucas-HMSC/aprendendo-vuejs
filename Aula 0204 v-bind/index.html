@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../vuejs/vue.js"></script>
+  <title>Vue.js</title>
+</head>
+<body>
+  <style>
+    .green {
+      color: green;
+    }
+    .red {
+      color: red;
+    }
+  </style>
+
+  <div id="app">
+    <h1 :class='google.marketCap > apple.marketCap ? "green" : "red"'>{{ google.companyName }} (R$ {{ google.marketCap }})</h1>
+    <h1 :class='apple.marketCap > google.marketCap ? "green" : "red"'>{{ apple.companyName }} (R$ {{ apple.marketCap }})</h1>
+    <button @click='loadData'>
+      Puxar Preços
+    </button>
+  </div>
+
+  <script>
+    const vm = new Vue ({
+      el: '#app',
+      data: {
+        google: {},
+        apple: {},
+      },
+      methods: {
+        async loadData() {
+          const google = await fetch('https://api.origamid.dev/stock/googl/quote');
+          const apple = await fetch('https://api.origamid.dev/stock/aapl/quote');
+          this.google = await google.json();
+          this.apple = await apple.json();
+        }
+      },
+    });
+
+    /* Exercícios
+    * Utilizando as API's
+    * https://api.origamid.dev/stock/aapl/quote
+    * https://api.origamid.dev/stock/googl/quote
+    * Compare o marketCap (valor de mercado) entre ambas.
+    * Mostre o nome das empresas e o valor na interace (companyName e marketCap).
+    * Mude a cor para verde o nome da empresa com maior marketCap e vermelho a com menor.
+    */
+  </script>
+</body>
+</html>
