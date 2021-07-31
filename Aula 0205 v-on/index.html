@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../vuejs/vue.js"></script>
+  <title>Vue.js</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li>
+        <a 
+          href="https://api.origamid.dev/stock/aapl/quote"
+          @click.prevent="handleFetch('aapl')"
+        >
+          Apple
+        </a>
+      </li>
+      <li>
+        <a 
+          href="https://api.origamid.dev/stock/googl/quote"
+          @click.prevent="handleFetch('googl')"  
+        >
+          Google
+        </a>
+      </li>
+      <li>
+        <a 
+          href="https://api.origamid.dev/stock/amzn/quote"
+          @click.prevent="handleFetch('amzn')"
+        >
+          Amazon
+        </a>
+      </li>
+      <li>
+        <a 
+          href="https://api.origamid.dev/stock/ebay/quote"
+          @click.prevent="handleFetch('ebay')"
+        >
+          Ebay
+        </a>
+      </li>
+      <li>
+        <a 
+          href="https://api.origamid.dev/stock/pypl/quote"
+          @click.prevent="handleFetch('pypl')"
+        >
+          Paypal
+        </a>
+      </li>
+    </ul>
+
+    <div>
+      <p>Nome da empresa: {{ companyName }}</p>
+      <p>Valor das ações: {{ latestPrice }}</p>
+      <p>Valor de mercado: {{ marketCap }}</p>
+    </div>
+  </div>
+
+  <script>
+    const vm = new Vue ({
+      el: '#app',
+      data: {
+        companyName: '', 
+        latestPrice: 0,
+        marketCap: 0,
+      },
+      methods: {
+        async handleFetch(name) {
+          const data = await fetch(`https://api.origamid.dev/stock/${name}/quote`);
+          const response = await data.json();
+          this.companyName = response.companyName;
+          this.latestPrice = response.latestPrice;
+          this.marketCap = response.marketCap;
+        }
+      },
+    });
+
+    /* Exercícios
+    * Utilizando API
+    * https://api.origamid.dev/stock/aapl/quote
+    * Adicione um evento de clique a cada <a> do html acima e previna o comportamento padrão.
+    * Faça o fetch dos dados do href ao click e mostre na interface o companyName, latestPrice, marketCap
+    */
+  </script>
+</body>
+</html>
+
+
+
