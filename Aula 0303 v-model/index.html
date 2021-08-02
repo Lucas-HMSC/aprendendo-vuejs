@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../vuejs/vue.js"></script>
+  <title>Vue.js</title>
+</head>
+<body>
+  <div id="app">
+    <form>
+      <div>
+        <label for="width">width</label>
+        <input type="number" name="width" id="width" v-model="width" />
+        <strong>width: {{ width }} px;</strong>
+      </div>
+      <br />
+      <div>
+        <label for="height">height</label>
+        <input type="number" name="height" id="height" v-model="height" />
+        <strong>height: {{ height }} px;</strong>
+      </div>
+      <br />
+      <div>
+        <label for="fontSize">font-size</label>
+        <input type="number" name="fontSize" id="fontSize" v-model="fontSize" />
+        <strong>font-size: {{ fontSize }} px;</strong>
+      </div>
+      <br />
+      <div>
+        <label for="fontFamily">font-family</label>
+        <select name="fontFamily" id="fontFamily" v-model="fontFamily">
+          <option disabled value="">Selecione uma fonte</option>
+          <option value="serif">Serifada</option>
+          <option value="sans-serif">Sem Serifa</option>
+          <option value="monospace">Monoespaçada</option>
+        </select>
+        <strong>font-family: {{ fontFamily }};</strong>
+      </div>
+      <br />
+      <div>
+        <label for="textAlign">text-align</label>
+        <select name="textAlign" id="textAlign" v-model="textAlign">
+          <option disabled value="">Selecione um alinhamento</option>
+          <option value="left">À Esquerda</option>
+          <option value="right">À Direita</option>
+          <option value="center">Centralizado</option>
+        </select>
+        <strong>text-align: {{ textAlign }};</strong>
+      </div>
+      <br />
+      <div>
+        <label for="background">background</label>
+        <input type="color" name="background" id="background" v-model="background">
+        <strong>background: {{background}};</strong>
+      </div>
+      <br />
+      <div>
+        <label for="color">color</label>
+        <input type="color" name="color" id="color" v-model="color">
+        <strong>color: {{color}};</strong>
+      </div>
+      <br />
+      <div>
+        <label for="borderRadius">border-radius</label>
+        <input type="number" name="borderRadius" id="borderRadius" v-model="borderRadius" />
+        <strong>border-radius: {{ borderRadius }} px;</strong>
+      </div>
+    </form>
+    <br />
+    <button :style="{
+      width: widthPx,
+      height: heightPx,
+      fontSize: fontSizePx,
+      fontFamily: fontFamily,
+      textAlign: textAlign,
+      background: background,
+      color: color,
+      borderRadius: borderRadiusPx,
+    }">
+      Button Example
+    </button>
+
+    <hr />
+
+    <form>
+      <div>
+        <label for="name">Nome</label>
+        <input type="text" name="name" id="name" v-model.lazy="name">
+      </div>
+      <br />
+      <div>
+        <label for="email">E-mail</label>
+        <input type="email" name="email" id="email" v-model.lazy="email">
+      </div>
+      <br />
+      <div>
+        <label for="telefone">Telefone</label>
+        <input type="email" name="telefone" id="telefone" v-model.lazy="telefone">
+      </div>
+      <br />
+      <div>
+        <label for="message">Mensagem</label>
+        <textarea name="message" id="message" cols="30" rows="5" v-model.lazy="message"></textarea>
+      </div>
+      <br />
+      <button @click.prevent="handleSendForm">
+        Enviar
+      </button>
+
+      <div v-if="sent">
+        <p>Nome: {{ name }}</p>
+        <p>E-mail: {{ email }}</p>
+        <p>Telefone: {{ telefone }}</p>
+        <p>Mensagem: {{ message }}</p>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        width: 150,
+        height: 40,
+        fontSize: 12,
+        fontFamily: 'monospace',
+        textAlign: 'center',
+        background: '#8844ee',
+        color: '#EEEEEE',
+        borderRadius: 8,
+        name: '',
+        email: '',
+        telefone: '',
+        message: '',
+        sent: false,
+      },
+      computed: {
+        widthPx() {
+          return this.width + 'px';
+        },
+        heightPx() {
+          return this.height + 'px';
+        },
+        fontSizePx() {
+          return this.fontSize + 'px';
+        },
+        borderRadiusPx() {
+          return this.borderRadius + 'px';
+        },
+      },
+      methods: {
+        handleSendForm() {
+          this.sent = true;
+        },
+      },
+    });
+
+    /* Exercícios
+    * 1 - Crie um criador de botões.
+    * O usuário poderá definir:
+      width,
+      height,
+      font-size,
+      font-family,
+      text-align,
+      background,
+      color,
+      border-radius,
+    * As escolhas serão feitas em campos de
+    * formulário. Cada escolha deverá ser 
+    * refletida em um elemento (o botão).
+    * 2 - Crie um formulário com, nome, email, telefone e mensagem.
+    * Ao clicar em enviar, as informações preenchidas no formulário
+    * devem aparecer abaixo do mesmo. (previna o comportamento padrão do botão enviar)
+    */
+  </script>
+</body>
+</html>
