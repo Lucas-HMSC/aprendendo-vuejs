@@ -51,7 +51,7 @@
             X
           </button>
           <span class="modal_preco">
-            {{ produto.preco }}
+            {{ produto.preco | numeroPreco }}
           </span>
           <h2 class="modal_titulo">
             {{ produto.nome }}
@@ -87,6 +87,12 @@
         </div>
       </div>
     </section>
+
+    <div class="alerta" :class="{ativo: alertaAtivo}">
+      <p class="alerta_mensagem">
+        {{ mensagemAlerta }}
+      </p>
+    </div>
   </div>
 
   <script src="./app.js"></script>
