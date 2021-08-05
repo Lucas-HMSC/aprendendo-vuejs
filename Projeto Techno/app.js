@@ -4,6 +4,7 @@ const vm = new Vue({
     produtos: [],
     produto: false,
     carrinho : [],
+    mensagemAlerta: "Item adicionado",
   },
   filters: {
     numeroPreco(valor) {
@@ -53,8 +54,17 @@ const vm = new Vue({
     removerItem(index) {
       this.carrinho.splice(index, 1);
     },
+    checarLocalStorage() {
+      if (window.localStorage.carrinho) this.carrinho = JSON.parse(window.localStorage.carrinho);
+    },
+  },
+  watch: {
+    carrinho() {
+      window.localStorage.carrinho = JSON.stringify(this.carrinho);
+    },
   },
   created() {
     this.fetchProdutos();
+    this.checarLocalStorage();
   },
 });
