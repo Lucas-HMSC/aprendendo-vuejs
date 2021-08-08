@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../vuejs/vue.js"></script>
+  <title>Vue.js</title>
+</head>
+<body>
+  <div id="app">
+    <lista-produtos :frutas="lista" titulo='Esse é o título'></lista-produtos>
+  </div>
+
+  <script>
+    const ItemProduto = {
+      name: 'ItemProduto',
+      // props: ['nomeFruta', 'total'],
+      props: {
+        nomeFruta: String,
+        total: Number,
+        cor: {
+          type: String,
+          required: true,
+        },
+        tamanho: {
+          type: String,
+          default: 'Grande',
+        },
+      },
+      template: `
+        <li>
+          <h2>{{ nomeFruta }}</h2>
+          Esse é o nome: {{ nomeFruta }}
+          {{ total + 2 }}
+          {{ cor }}
+          {{ tamanho }}
+        </li>
+      `,
+    }
+
+    const ListaProdutos = {
+      name: 'ListaProdutos',
+      props: ['frutas', 'titulo'],
+      components: {
+        ItemProduto,
+      },
+      template: `
+        <ul>
+          <h1>{{ titulo }}</h1>
+          <item-produto 
+            v-for="(fruta, index) in frutas" 
+            :key="fruta + index" 
+            :nomeFruta="fruta"
+            :total="20"
+            cor="#333333"
+          >
+          </item-produto>
+        </ul>
+      `,
+    }
+
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        lista: ['Banana', 'Laranja', 'Uva'],
+      },
+      components: {
+        ListaProdutos,
+      },
+      methods: {
+
+      },
+    });
+
+    /* Exercícios
+    * 
+    */
+  </script>
+</body>
+</html>
+
+
