@@ -9,72 +9,76 @@
 </head>
 <body>
   <div id="app">
-    <lista-produtos :frutas="lista" titulo='Esse é o título'></lista-produtos>
+    <input-button></input-button>
   </div>
 
   <script>
-    const ItemProduto = {
-      name: 'ItemProduto',
-      // props: ['nomeFruta', 'total'],
+    const CompanyDetails = {
+      name: 'CompanyDetails',
       props: {
-        nomeFruta: String,
-        total: Number,
-        cor: {
-          type: String,
-          required: true,
-        },
-        tamanho: {
-          type: String,
-          default: 'Grande',
-        },
+        data: Object,
       },
       template: `
-        <li>
-          <h2>{{ nomeFruta }}</h2>
-          Esse é o nome: {{ nomeFruta }}
-          {{ total + 2 }}
-          {{ cor }}
-          {{ tamanho }}
-        </li>
+        <div>
+          <p v-for="(value, key) in data">
+            <strong>{{ key }}:</strong>
+            {{ value }}
+          </p>  
+        </div>
       `,
-    }
+    } 
 
-    const ListaProdutos = {
-      name: 'ListaProdutos',
-      props: ['frutas', 'titulo'],
-      components: {
-        ItemProduto,
+    const InputButton = {
+      name: 'InputButton',
+      data() {
+        return {
+          name: '',
+          data: {},
+        }
+      },
+      methods: {
+        async fetchQuote() {
+          const data = await fetch(`https://api.origamid.dev/stock/${this.name}/quote`);
+          this.data = await data.json();
+        }
       },
       template: `
-        <ul>
-          <h1>{{ titulo }}</h1>
-          <item-produto 
-            v-for="(fruta, index) in frutas" 
-            :key="fruta + index" 
-            :nomeFruta="fruta"
-            :total="20"
-            cor="#333333"
-          >
-          </item-produto>
-        </ul>
+        <div>
+          <input type="text" v-model="name" placeholder="aapl" />
+          <button @click="fetchQuote">Enviar</button>  
+          <company-details :data="data"></company-details>
+        </div>
       `,
+      components: {
+        CompanyDetails,
+      },
     }
 
     const vm = new Vue({
       el: '#app',
       data: {
-        lista: ['Banana', 'Laranja', 'Uva'],
+        
       },
       components: {
-        ListaProdutos,
-      },
-      methods: {
-
+        InputButton,
       },
     });
 
+
     /* Exercícios
-    * 
+    * Crie um componente com um campo de input e um botão para enviar o valor.
+    * Nesse campo de input será possível escrever o simbolo de empresas americanas
+    * simbolos ex:
+    * aapl -> Apple
+    * goog -> Google
+    * msft -> Microsoft
+    * amzn -> Amazon
+    * fb -> Facebook
+    * Ao clicar no botão, faça um fetch com a API:
+    * https://api.origamid.dev/stock/${SIMBOLO}/quote
+    * O resultado do fetch deverá ser mostrado em um componente filho do formulário.
+    * Envia as informações utilizando prop
+    * Mostre todas as informações do fetch utilizando um loop.
     */
   </script>
 </body>
