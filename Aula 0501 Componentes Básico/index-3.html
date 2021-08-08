@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../vuejs/vue.js"></script>
+  <title>Vue.js</title>
+</head>
+<body>
+  <div id="app">
+    <component1></component1>
+    <component3></component3>
+  </div>
+
+  <script type="module">
+    import Component1 from './Component1.js';
+    import Component3 from './Component3.js';
+
+    Vue.component('Component1', Component1);
+
+    const vm = new Vue({
+      el: '#app',
+      components: {
+        Component3,
+      },
+    });
+
+    /* Exercícios
+    * Crie uma tela com 3 diferentes Componentes.
+    * 1 - Mostre o tempo do dia usando a API:
+    * https://www.metaweather.com/api/location/455825/ (Código do Rio de Janeiro)
+    * 2 - Mostre a relação dolar/real
+    * https://api.exchangeratesapi.io/latest?base=USD
+    * 3 - Mostre o valor de mercado da Apple (marketCap)
+    * https://api.origamid.dev/stock/aapl/quote
+    * Crie os componentes em arquivos separados e utilize import/export
+    * O componente 1 deve ser registrado globalmente
+    * O componente 2 deve ser registrado localmente dentro do componente 3.
+    * O componente 3 deve ser registrado localmente da instância Vue.js
+    */
+  </script>
+</body>
+</html>
+
+
