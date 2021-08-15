@@ -5,7 +5,9 @@
       <RouterLink to='/'>Home</RouterLink>
       <RouterLink to='/cursos'>Cursos</RouterLink>
     </nav>
-    <RouterView />
+    <transition mode='out-in'>
+      <RouterView />
+    </transition>
   </div>
 </template>
 
@@ -41,5 +43,16 @@ a {
 .router-link-exact-active {
   color: #4b8;
   font-weight: bold;
+}
+
+.v-enter,
+.v-leave-to {
+  transform: translate3d(-20px, 0, 0);
+  opacity: 0;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: all .3s;
 }
 </style>

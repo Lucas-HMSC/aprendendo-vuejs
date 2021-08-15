@@ -3,7 +3,10 @@
     <h1>{{ curso }}</h1>
     <RouterLink :to='{name: "descricao"}'>Descrição</RouterLink>
     <RouterLink :to='{name: "aulas"}'>Aulas</RouterLink>
-    <RouterView />
+    
+    <transition mode='out-in' name='topDown'>
+      <RouterView />
+    </transition>
   </div>
 </template>
 
@@ -34,5 +37,14 @@ export default {
 </script>
 
 <style>
+.topDown-enter,
+.topDown-leave-to {
+  transform: translate3d(0, -40px, 0) scale(.2);
+  opacity: 0;
+}
 
+.topDown-enter-active,
+.topDown-leave-active {
+  transition: all .3s;
+}
 </style>
