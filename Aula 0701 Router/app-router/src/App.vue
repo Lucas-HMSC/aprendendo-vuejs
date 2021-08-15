@@ -4,6 +4,7 @@
     <nav>
       <RouterLink to='/'>Home</RouterLink>
       <RouterLink to='/cursos'>Cursos</RouterLink>
+      <RouterLink to='/acoes'>Acoes</RouterLink>
     </nav>
     <transition mode='out-in'>
       <RouterView />

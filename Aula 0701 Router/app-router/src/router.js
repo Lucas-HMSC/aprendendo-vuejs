@@ -3,8 +3,10 @@ import Router from 'vue-router';
 
 import CursoDescricao from './views/CursoDescricao.vue';
 import CursoAulas from './views/CursoAulas.vue';
+import AcoesDados from './views/AcoesDados.vue';
 import Cursos from './views/Cursos.vue';
 import Curso from './views/Curso.vue';
+import Acoes from './views/Acoes.vue';
 import Home from './views/Home.vue';
 
 Vue.use(Router);
@@ -16,6 +18,17 @@ export default new Router({
     {
       path: '/',
       component: Home,
+    },
+    {
+      path: '/acoes',
+      component: Acoes,
+      children: [
+        {
+          path: ':simbolo',
+          component: AcoesDados,
+          props: true,
+        }
+      ],
     },
     {
       path: '/cursos',
