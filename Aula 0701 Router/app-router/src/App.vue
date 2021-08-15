@@ -23,19 +23,23 @@ export default {
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #234;
+  border: 4px solid;
+  margin: 20px;
+  padding: 20px;
+}
+
+nav {
+  padding: 20px 0;
 }
 
 a {
   padding: 10px;
+  color: #234;
 }
 
 .router-link-exact-active {
-  color: #84e;
+  color: #4b8;
   font-weight: bold;
 }
 </style>
