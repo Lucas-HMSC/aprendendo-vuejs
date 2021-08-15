@@ -12,18 +12,6 @@
 <script>
 export default {
   props: ['curso'],
-  computed: { 
-    cursoComputed() {
-      return this.$route.params.curso;
-    },
-  },
-  created() {
-    console.log('Componente Cursos criado.');
-  },
-  beforeRouteUpdate(to, from, next) {
-    // console.log(to, from);
-    next();
-  },
 }
 </script>
 

@@ -10,17 +10,25 @@
 <script>
 export default {
   props: ['curso'],
-  computed: { 
-    cursoComputed() {
-      return this.$route.params.curso;
+  methods: {
+    puxarDados() {
+      console.log('Puxei API');
     },
   },
-  created() {
-    console.log('Componente Cursos criado.');
+  beforeRouteEnter(to, from, next) {
+    console.log(this);
+    next((vm) => {
+      console.log(vm);
+      vm.puxarDados();
+    });
   },
   beforeRouteUpdate(to, from, next) {
-    // console.log(to, from);
+    this.puxarDados();
     next();
+  },
+  beforeRouteLeave(to, from, next) {
+    const confirmar = confirm('Você deseja sair?');
+    if (confirmar) next();
   },
 }
 </script>

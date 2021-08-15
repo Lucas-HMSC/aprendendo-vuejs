@@ -21,6 +21,10 @@ export default new Router({
       path: '/cursos',
       component: Cursos,
       props: true,
+      // beforeEnter: (to, from, next) => {
+      //   console.log('Foi para cursos.');
+      //   next();
+      // },
       children: [
         {
           name: 'curso',
