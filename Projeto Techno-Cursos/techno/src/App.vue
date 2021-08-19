@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <TheHeader />
-    <RouterView />
+    <RouterView class='container' />
   </div>
 </template>
 
@@ -38,4 +38,9 @@ a.router-link-active {
   color: #4b8;
 }
 
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
 </style>
