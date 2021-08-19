@@ -6,9 +6,12 @@
       <RouterLink to='/cursos'>Cursos</RouterLink>
       <RouterLink to='/acoes'>Acoes</RouterLink>
     </nav>
-    <transition mode='out-in'>
       <RouterView />
-    </transition>
+      <RouterView 
+        name='sidebar'
+      />
+    <!-- <transition mode='out-in'>
+    </transition> -->
   </div>
 </template>
 
@@ -34,6 +37,7 @@ export default {
 
 nav {
   padding: 20px 0;
+  /* margin-top: 2000px; */
 }
 
 a {

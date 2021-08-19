@@ -1,13 +1,15 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import CursoDescricao from './views/CursoDescricao.vue';
-import CursoAulas from './views/CursoAulas.vue';
-import AcoesDados from './views/AcoesDados.vue';
-import Cursos from './views/Cursos.vue';
-import Curso from './views/Curso.vue';
-import Acoes from './views/Acoes.vue';
 import Home from './views/Home.vue';
+
+import Acoes from './views/Acoes.vue';
+import AcoesDados from './views/AcoesDados.vue';
+
+const Cursos = () => import('./views/Cursos.vue');
+const Curso = () => import(/* webpackChunkName: "curso" */ './views/Curso.vue');
+const CursoAulas = () => import(/* webpackChunkName: "curso" */ './views/CursoAulas.vue');
+const CursoDescricao = () => import(/* webpackChunkName: "curso" */ './views/CursoDescricao.vue');
 
 Vue.use(Router);
 
@@ -17,11 +19,21 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Home,
+      components: {
+        default: Home,
+        sidebar: Acoes,
+      }
+    },
+    {
+      path: '*',
+      redirect: '/',
     },
     {
       path: '/acoes',
-      component: Acoes,
+      components: {
+        default: Acoes,
+        sidebar: Home,
+      },
       children: [
         {
           path: ':simbolo',
@@ -60,4 +72,14 @@ export default new Router({
       ],
     },
   ],
+  scrollBehavior() {
+    return {
+      x: 0,
+      y: 0,
+    }
+    // return window.scrollTo({
+    //   top: 0,
+    //   behavior: 'smooth'
+    // });
+  },
 });
