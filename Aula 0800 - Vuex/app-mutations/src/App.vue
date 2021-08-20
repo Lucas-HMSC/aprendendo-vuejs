@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    {{ $store.state.acao }}
     <Aluno />
     <Curso />
   </div>
@@ -14,6 +15,9 @@ export default {
   components: {
     Aluno,
     Curso
+  },
+  created() {
+    this.$store.dispatch('puxarAcao');
   },
 }
 </script>
