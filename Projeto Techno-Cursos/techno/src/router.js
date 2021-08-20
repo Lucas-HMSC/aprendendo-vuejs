@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Home from './views/Home.vue';
+import Curso from './views/Curso.vue';
 import Cursos from './views/Cursos.vue';
 import Contato from './views/Contato.vue';
 
@@ -25,6 +26,12 @@ export default new Router({
       path: '/cursos',
       name: 'cursos',
       component: Cursos
+    },
+    {
+      path: '/cursos/:curso',
+      name: 'curso',
+      component: Curso,
+      props: true,
     }
   ],
 })
