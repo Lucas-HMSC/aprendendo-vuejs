@@ -1,12 +1,16 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import acao from '@/store/acao.js';
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  modules: {
+    acao,
+  },
   state: {
     aulasCompletas: [],
-    acao: null,
     livros: [
       {
         nome: "O Senhor dos Anéis",
@@ -29,19 +33,10 @@ export default new Vuex.Store({
     COMPLETAR_AULA(state, payload) {
       state.aulasCompletas.push(payload);
     },
-    UPDATE_ACAO(state, payload) {
-      state.acao = payload;
-    },
   },
   actions: {
     completarAula(context, payload) {
       context.commit('COMPLETAR_AULA', payload);
     },
-    async puxarAcao(context) {
-      const data = await fetch('https://api.origamid.dev/stock/aapl/quote');
-      const response = await data.json();
-      
-      context.commit('UPDATE_ACAO', response);
-    }
   },
 })

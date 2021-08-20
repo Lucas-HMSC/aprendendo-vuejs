@@ -11,7 +11,7 @@
         <p>{{ livro.nome }}</p>
       </li>
     </ul>
-    <p>{{ $store.state.acao }}</p>
+    <p>{{ $store.state.acao.acao }}</p>
     <Aluno />
     <Curso />
   </div>
@@ -33,7 +33,7 @@ export default {
     ...mapGetters(['livrosLidos']),
   },
   created() {
-    this.$store.dispatch('puxarAcao');
+    this.$store.dispatch('acao/puxarAcao');
   },
 }
 </script>
