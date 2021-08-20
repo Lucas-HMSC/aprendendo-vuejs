@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Home from './views/Home.vue';
+import Aula from './views/Aula.vue';
 import Curso from './views/Curso.vue';
 import Cursos from './views/Cursos.vue';
 import Contato from './views/Contato.vue';
@@ -32,6 +33,14 @@ export default new Router({
       name: 'curso',
       component: Curso,
       props: true,
+      children: [
+        {
+          path: ':aula',
+          name: 'aula',
+          component: Aula,
+          props: true,
+        }
+      ],
     }
   ],
 })

@@ -11,10 +11,13 @@
           <h2>Aulas</h2>
           <ul class="aulas">
             <li v-for='aula in api.aulas' :key='aula.id'>
-              {{ aula.nome }}
+              <RouterLink :to='{name: "aula", params: { aula: aula.id }}'>
+                {{ aula.nome }}
+              </RouterLink>
             </li>
           </ul>
         </div>
+        <RouterView />
       </div>
     </transition>
   </div>
@@ -41,5 +44,10 @@ export default {
   padding: 20px;
   margin-bottom: 10px;
   border-radius: 4px;
+}
+
+.aulas li a.router-link-active {
+  background: #4B8;
+  color: white;
 }
 </style>
