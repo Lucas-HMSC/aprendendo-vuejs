@@ -1,0 +1,44 @@
+{
+  "usuario": [
+    {
+      "id": "lucas@email.com",
+      "email": "lucas@email.com",
+      "nome": "Lucas Carvalho",
+      "senha": "123",
+      "rua": "Rua Logo Ali",
+      "cep": "12345678",
+      "numero": "123",
+      "estado": "SP",
+      "cidade": "São José dos Campos"
+    }
+  ],
+  "produto": [
+    {
+      "id": "notebook",
+      "nome": "Notebook",
+      "usuario_id": "lucas@email.com",
+      "preco": "4999",
+      "vendido": "false",
+      "descricao": "Esse é um novo notebook.",
+      "fotos": null
+    },
+    {
+      "id": "smartphone",
+      "nome": "Smartphone",
+      "usuario_id": "lucas@email.com",
+      "preco": "1999",
+      "vendido": "false",
+      "descricao": "Esse é um novo smartphone.",
+      "fotos": null
+    },
+    {
+      "id": "tablet",
+      "nome": "Tablet",
+      "usuario_id": "lucas@email.com",
+      "preco": "1399",
+      "vendido": "false",
+      "descricao": "Esse é um novo tablet.",
+      "fotos": null
+    }
+  ]
+}
