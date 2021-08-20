@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import { api } from '@/services.js';
+
 export default {
   data() {
     return {
@@ -21,9 +23,10 @@ export default {
     }
   },
   methods: {
-    async getProdutos() {
-      const data = await fetch('http://localhost:3000/produto');
-      this.produtos = await data.json();
+    getProdutos() {
+      api
+        .get('/produto')
+        .then(response => this.produtos = response.data);
     },
   },
   created() {
