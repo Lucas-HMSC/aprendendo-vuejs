@@ -1,8 +1,12 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router.js'
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router.js';
 
-Vue.config.productionTip = false
+import PageLoading from './components/PageLoading';
+
+Vue.config.productionTip = false;
+
+Vue.component('PageLoading', PageLoading);
 
 new Vue({
   router,

@@ -13,7 +13,7 @@ export default {
       setTimeout(async () => {
         this.api = await data.json();
         this.loading = false;
-      }, 1500);
+      }, 1000);
     },
   },
 }
