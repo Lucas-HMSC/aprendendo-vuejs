@@ -4,7 +4,18 @@
       <RouterLink to='/' class="logo">
         <img src="@/assets/ranek.svg" alt="Ranek">
       </RouterLink>
-      <RouterLink to='/login' class="btn">
+      <RouterLink 
+        to='/usuario'
+        class="btn"
+        v-if='$store.state.login'
+      >
+        {{ nome }}
+      </RouterLink>
+      <RouterLink 
+        to='/login' 
+        class="btn"
+        v-else
+      >
         Vender / Login
       </RouterLink>
     </nav>
@@ -14,6 +25,11 @@
 <script>
 export default {
   name: 'TheHeader',
+  computed: {
+    nome() {
+      return this.$store.state.usuario.nome.replace(/ .*/, '');
+    },
+  },
 }
 </script>
 

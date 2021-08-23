@@ -10,7 +10,18 @@
       "numero": "123",
       "estado": "SP",
       "cidade": "São José dos Campos"
-    }
+    },
+    {
+      "id": "andre@email.com",
+      "email": "andre@email.com",
+      "nome": "Andre Rafael",
+      "senha": "123",
+      "rua": "Rua Logo Ali",
+      "cep": "12345678",
+      "numero": "123",
+      "estado": "RJ",
+      "cidade": "Rio de Janeiro"
+    },
   ],
   "produto": [
     {
