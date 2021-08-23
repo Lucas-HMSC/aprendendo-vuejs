@@ -2,7 +2,9 @@
   <div id="app">
     <TheHeader />
     <main id="main">
-      <RouterView />
+      <transition mode='out-in'>
+        <RouterView />
+      </transition>
     </main>
     <TheFooter />
   </div>
@@ -78,6 +80,10 @@ img {
 
 #main {
   flex: 1;
+}
+
+label {
+  margin-bottom: 5px;
 }
 
 input,
