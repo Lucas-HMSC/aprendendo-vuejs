@@ -24,6 +24,10 @@
       >
         Logar
       </button>
+
+      <ErroNotificacao 
+        :erros='erros'
+      />
     </form>
     <p class="perdeu">
       <a href="/" target="_blank">Perdeu a senha? Clique aqui.</a>
@@ -42,7 +46,8 @@ export default {
       login: {
         email: '',
         senha: '',
-      }
+      },
+      erros: [],
     }
   },
   components: {
@@ -50,11 +55,16 @@ export default {
   },
   methods: {
     logar() {
-      this.$store.dispatch('logarUsuario', this.login)
+      this.erros = [];
+      this.$store
+        .dispatch('logarUsuario', this.login)
         .then(() => {
           this.$store.dispatch('getUsuario');
           this.$router.push({name: 'Usuario'});
-        });
+        })
+        .catch((error) => {
+          this.erros.push(error.response.data.message);
+        })
     },
   },
 }
