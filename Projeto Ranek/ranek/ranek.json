@@ -1,4 +1,50 @@
 {
+  "transacao": [
+    {
+      "comprador_id": "mariaclara@email.com",
+      "vendedor_id": "lucas@email.com",
+      "produto": {
+        "id": "notebook",
+        "nome": "Notebook",
+        "usuario_id": "lucas@email.com",
+        "preco": "4999",
+        "vendido": "false",
+        "descricao": "Esse é um novo notebook.",
+        "fotos": null
+      },
+      "endereco": {
+        "cep": "12230000",
+        "rua": "Avenida Andrômeda",
+        "numero": "123456",
+        "bairro": "Jardim Satélite",
+        "cidade": "São José dos Campos",
+        "estado": "SP"
+      },
+      "id": 1
+    },
+    {
+      "comprador_id": "user@email.com",
+      "vendedor_id": "lucas@email.com",
+      "produto": {
+        "id": "tablet",
+        "nome": "Tablet",
+        "usuario_id": "lucas@email.com",
+        "preco": "1399",
+        "vendido": "false",
+        "descricao": "Esse é um novo tablet.",
+        "fotos": null
+      },
+      "endereco": {
+        "cep": "12234010",
+        "rua": "Avenida Dom Pedro I",
+        "numero": "123",
+        "bairro": "Jardim Imperial",
+        "cidade": "São José dos Campos",
+        "estado": "SP"
+      },
+      "id": 2
+    }
+  ],
   "usuario": [
     {
       "id": "lucas@email.com",
@@ -28,9 +74,21 @@
       "nome": "Maria Clara",
       "email": "mariaclara@email.com",
       "senha": "124",
-      "cep": "12234000",
-      "rua": "Rua Carlos Nunes de Paula",
+      "cep": "12230000",
+      "rua": "Avenida Andrômeda",
       "numero": "123456",
+      "bairro": "Jardim Satélite",
+      "cidade": "São José dos Campos",
+      "estado": "SP"
+    },
+    {
+      "id": "user@email.com",
+      "nome": "User Teste",
+      "email": "user@email.com",
+      "senha": "123",
+      "cep": "12234010",
+      "rua": "Avenida Dom Pedro I",
+      "numero": "123",
       "bairro": "Jardim Imperial",
       "cidade": "São José dos Campos",
       "estado": "SP"

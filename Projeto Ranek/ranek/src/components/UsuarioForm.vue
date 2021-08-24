@@ -1,28 +1,31 @@
 <template>
   <form>
-    <label for="nome">Nome</label>
-    <input 
-      type="text"
-      id="nome"
-      name="nome"
-      v-model='nome'
+    <div 
+      class="usuario"
+      v-if='mostrarDadosLogin'
     >
-
-    <label for="email">Email</label>
-    <input 
-      type="email"
-      id="email"
-      name="email"
-      v-model='email'
-    >
-
-    <label for="senha">Senha</label>
-    <input 
-      type="password"
-      id="senha"
-      name="senha"
-      v-model='senha'
-    >
+      <label for="nome">Nome</label>
+      <input
+        type="text"
+        id="nome"
+        name="nome"
+        v-model='nome'
+      >
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        v-model='email'
+      >
+      <label for="senha">Senha</label>
+      <input
+        type="password"
+        id="senha"
+        name="senha"
+        v-model='senha'
+      >
+    </div>
 
     <label for="cep">CEP</label>
     <input 
@@ -90,6 +93,9 @@ export default {
       base: 'usuario',
       mutation: 'UPDATE_USUARIO'
     }),
+    mostrarDadosLogin() {
+      return (!this.$store.state.login || (this.$route.name === 'Usuario-Editar'));
+    },
   },
   methods: {
     preencherCep() {
@@ -108,10 +114,15 @@ export default {
 </script>
 
 <style scoped>
+.usuario,
 form {
   display: grid;
   grid-template-columns: 80px 1fr;
   align-items: center;
+}
+
+.usuario {
+  grid-column: 1 / 3;
 }
 
 .button {
