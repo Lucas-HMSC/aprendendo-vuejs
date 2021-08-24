@@ -21,6 +21,18 @@
       "numero": "123",
       "estado": "RJ",
       "cidade": "Rio de Janeiro"
+    },
+    {
+      "id": "mariaclara@email.com",
+      "nome": "Maria Clara",
+      "email": "mariaclara@email.com",
+      "senha": "124",
+      "cep": "12234000",
+      "rua": "Rua Carlos Nunes de Paula",
+      "numero": "123",
+      "bairro": "Jardim Imperial",
+      "cidade": "São José dos Campos",
+      "estado": "SP"
     }
   ],
   "produto": [
