@@ -4,15 +4,21 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue';
 import Login from '../views/Login.vue';
 import Produto from '../views/Produto.vue';
+import PaginaNaoEncontrada from '../views/PaginaNaoEncontrada.vue';
+
 import Usuario from '../views/usuario/Usuario.vue';
-import UsuarioProdutos from '../views/usuario/UsuarioProdutos.vue';
 import UsuarioEditar from '../views/usuario/UsuarioEditar.vue';
 import UsuarioVendas from '../views/usuario/UsuarioVendas.vue';
 import UsuarioCompras from '../views/usuario/UsuarioCompras.vue';
+import UsuarioProdutos from '../views/usuario/UsuarioProdutos.vue';
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '*',
+    component: PaginaNaoEncontrada,
+  },
   {
     path: '/',
     name: 'Home',
