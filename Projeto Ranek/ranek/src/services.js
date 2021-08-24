@@ -34,7 +34,7 @@ export const api = {
     return axios.post('https://ranekapi.origamid.dev/json/jwt-auth/v1/token', body);
   },
   validateToken() {
-    return axios.post('https://ranekapi.origamid.dev/json/jwt-auth/v1/validate');
+    return axiosInstance.post('https://ranekapi.origamid.dev/json/jwt-auth/v1/validate');
   },
 };
 
