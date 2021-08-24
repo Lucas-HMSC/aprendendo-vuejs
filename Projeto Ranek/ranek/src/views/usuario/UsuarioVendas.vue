@@ -65,6 +65,7 @@ export default {
   },
   created() {
     if (this.login) this.getVendas();
+    document.title = 'Usuário | Vendas';
   },
 }
 </script>

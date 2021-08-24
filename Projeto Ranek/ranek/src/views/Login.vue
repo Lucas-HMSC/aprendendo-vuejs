@@ -67,6 +67,9 @@ export default {
         })
     },
   },
+  created() {
+    document.title = 'Ranek | Login';
+  },
 }
 </script>
 
