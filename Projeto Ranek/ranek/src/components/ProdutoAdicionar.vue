@@ -60,13 +60,18 @@ export default {
     formatarProduto() {
       this.produto.usuario_id = this.$store.state.usuario.id;
     },
-    adicionarProduto() {
+    async adicionarProduto(event) {
       this.formatarProduto();
-      api
-        .post('/produto', this.produto)
-        .then(() => {
-          this.$store.dispatch('getUsuarioProdutos');
-        });
+
+      const button = event.currentTarget;
+      button.value = 'Adicionando...';
+      button.setAttribute('disabled', '');
+
+      await api.post('/produto', this.produto);
+      await this.$store.dispatch('getUsuarioProdutos');
+
+      button.removeAttribute('disabled');
+      button.value = 'Adicionar Produto';
     },
   },
 }
