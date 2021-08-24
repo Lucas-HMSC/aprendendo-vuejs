@@ -33,7 +33,7 @@
           />
         </transition>
         <button 
-          class="btn"
+          class="btn btn-disabled"
           v-else
           disabled
         >
@@ -94,8 +94,23 @@ export default {
   margin-bottom: 40px;
 }
 
+.fotos {
+  grid-row: 1 / 3;
+}
+
+.info {
+  position: sticky;
+  top: 20px;
+}
+
 .descricao {
   font-size: 1.2rem;
+}
+
+img {
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(30, 60, 90, .2);
+  border-radius: 4px;
 }
 
 .btn {

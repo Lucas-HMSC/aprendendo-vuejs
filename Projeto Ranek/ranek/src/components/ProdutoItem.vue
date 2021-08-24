@@ -9,7 +9,6 @@
         :src='produto.fotos[0].src' 
         :alt='produto.fotos[0].titulo'
       >
-      <p>Ver Produto</p>
     </RouterLink>
     <div class="info">
       <p class="preco">{{ produto.preco | numeroPreco }}</p>

@@ -22,6 +22,7 @@
       name="fotos"
       type="file"
       ref="fotos"
+      multiple
     >
 
     <label for="descricao">Descrição</label>
@@ -58,16 +59,29 @@ export default {
   },
   methods: {
     formatarProduto() {
-      this.produto.usuario_id = this.$store.state.usuario.id;
+      const form = new FormData();
+
+      const files = this.$refs.fotos.files;
+      for (let i = 0; i < files.length; i++) {
+        form.append(files[i].name, files[i]);
+      }
+
+      form.append('nome', this.produto.nome);
+      form.append('preco', this.produto.preco);
+      form.append('descricao', this.produto.descricao);
+      form.append('vendido', this.produto.vendido);
+      form.append('usuario_id', this.$store.state.usuario.id);
+
+      return form;
     },
     async adicionarProduto(event) {
-      this.formatarProduto();
+      const produto = this.formatarProduto();
 
       const button = event.currentTarget;
       button.value = 'Adicionando...';
       button.setAttribute('disabled', '');
 
-      await api.post('/produto', this.produto);
+      await api.post('/produto', produto);
       await this.$store.dispatch('getUsuarioProdutos');
 
       button.removeAttribute('disabled');
