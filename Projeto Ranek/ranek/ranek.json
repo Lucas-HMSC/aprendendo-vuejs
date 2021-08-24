@@ -2,14 +2,15 @@
   "usuario": [
     {
       "id": "lucas@email.com",
-      "email": "lucas@email.com",
       "nome": "Lucas Carvalho",
+      "email": "lucas@email.com",
       "senha": "123",
-      "rua": "Rua Logo Ali",
       "cep": "12345678",
-      "numero": "123",
-      "estado": "SP",
-      "cidade": "São José dos Campos"
+      "rua": "Rua Logo Ali",
+      "numero": "321",
+      "bairro": "Esse mesmo",
+      "cidade": "São José dos Campos",
+      "estado": "SP"
     },
     {
       "id": "andre@email.com",
@@ -29,7 +30,7 @@
       "senha": "124",
       "cep": "12234000",
       "rua": "Rua Carlos Nunes de Paula",
-      "numero": "123",
+      "numero": "123456",
       "bairro": "Jardim Imperial",
       "cidade": "São José dos Campos",
       "estado": "SP"
